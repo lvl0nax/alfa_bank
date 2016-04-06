@@ -121,5 +121,18 @@ module AlfaBank
         :user_name, :password, :client_id
       ]
     }.freeze
+
+    ALFA_BANK_PARAMS_MAP = {
+      order_number:   :orderNumber,
+      user_name:      :userName,
+      password:       :password,
+      return_url:     :returnUrl,
+      amount:         :amount,
+      currency:       :currency,
+      language:       :language,
+      client_id:      :clientId,
+      fail_url:       :failUrl,
+      binding_id:     :bindingId
+    }.freeze
   end
 end
