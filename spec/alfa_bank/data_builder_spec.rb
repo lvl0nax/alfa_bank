@@ -27,24 +27,36 @@ describe AlfaBank::DataBuilder do
   end
 
   describe '#link' do
-    it "returns correct link for key" do
+    it 'returns correct link for key' do
       AlfaBank.configure do |config|
-        config.user_name = "tester"
-        config.password = "tester_password"
-        config.base_link = "tester_base_link"
+        config.user_name = 'tester'
+        config.password  = 'tester_password'
+        config.base_link = 'tester_base_link'
       end
       expect(described_class.new(:register_order, {}).link).to eq('tester_base_link/register.do')
     end
   end
 
   describe '#data' do
-    # before do
-    #   AlfaBank.configure do |config|
-    #     config.user_name = "tester"
-    #     config.password = "tester_password"
-    #     config.base_link = "tester_base_link"
-    #   end
-    # end
+    before do
+      AlfaBank.configure do |config|
+        config.user_name = 'tester'
+        config.password  = 'tester_password'
+        config.base_link = 'tester_base_link'
+      end
+    end
 
+    AlfaBank::Constants::REQUIRED_FIELDS.each_pair do |request, fields|
+      it "does not raise error for #{request}" do
+        h = build_params(fields)
+        expect(described_class.new(request, h).call).to be_a(Hash)
+      end
+    end
+
+    it 'raises error for :test request' do
+      h = build_params(AlfaBank::Constants::REQUIRED_FIELDS[:register_order])
+      expect { described_class.new(:test, h).call }
+        .to raise_error(StandardError, 'Please check that params are correct')
+    end
   end
 end

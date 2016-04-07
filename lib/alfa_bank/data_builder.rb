@@ -1,4 +1,5 @@
-require File.join(File.dirname(__FILE__), "constants")
+require File.join(File.dirname(__FILE__), 'constants')
+require File.join(File.dirname(__FILE__), 'rest_data_builder')
 require 'active_support/core_ext/hash/keys'
 
 module AlfaBank
@@ -11,13 +12,18 @@ module AlfaBank
     end
 
     def call
+      unless valid?
+        raise_custom_error
+      end
       opts.merge!(user_name: user_name, password: password)
-      data_builder.public_send(:request_type, opts)
+      data_builder.build_params(request_type, opts)
     end
 
     def valid?
       fields = Constants::REQUIRED_FIELDS[request_type]
       opts.values_at(*fields).compact.size == fields.size
+    rescue
+      raise_custom_error
     end
 
     def link
@@ -34,7 +40,12 @@ module AlfaBank
 
     # TODO: add depandency from config (soap|rest)
     def data_builder
-      RestDataBuilder
+      AlfaBank::RestDataBuilder
+    end
+
+    private
+    def raise_custom_error
+      raise StandardError, 'Please check that params are correct'
     end
   end
 end
