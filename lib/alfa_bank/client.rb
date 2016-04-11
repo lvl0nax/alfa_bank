@@ -1,5 +1,5 @@
 require 'singleton'
-require File.join(File.dirname(__FILE__), "data_builder")
+require File.join(File.dirname(__FILE__), 'request_sender')
 
 module AlfaBank
   class Client
@@ -79,7 +79,7 @@ module AlfaBank
     end
 
     def send_request(request_type, opts)
-
+      RequestSender.new(request_type, opts).call
     end
   end
 end

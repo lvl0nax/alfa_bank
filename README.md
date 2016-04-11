@@ -1,8 +1,7 @@
 # AlfaBank
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/alfa_bank`. To experiment with that code, run `bin/console` for an interactive prompt.
+DESCRIPTION COMING SOON
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +21,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+###Configuration(initializer):
+
+```ruby
+AlfaBank.configure do |config|
+  config.user_name = ENV[:ALFA_BANK_USERNAME]  # username alfa-bank api account
+  config.password = ENV[:ALFA_BANK_PASSWORD]   # password from alfa-bank api account
+  config.base_link = 'https://test.paymentgate.ru/testpayment/rest/'
+end
+```
+
+###usage
+
+```ruby
+params =
+  { order_number: 1,
+    amount: 10043, # in cents
+    return_url: [YOUR_APP_RETURN_URL]}
+AlfaBank::Client.register_order(params)
+```
+
 
 ## Development
 
