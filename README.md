@@ -1,5 +1,7 @@
 # AlfaBank
 
+[![Code Climate](https://codeclimate.com/github/lvl0nax/alfa_bank/badges/gpa.svg)](https://codeclimate.com/github/lvl0nax/alfa_bank)
+
 DESCRIPTION COMING SOON
 
 
