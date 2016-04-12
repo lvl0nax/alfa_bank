@@ -1,6 +1,7 @@
 # AlfaBank
 
 [![Code Climate](https://codeclimate.com/github/lvl0nax/alfa_bank/badges/gpa.svg)](https://codeclimate.com/github/lvl0nax/alfa_bank)
+[![Build Status](https://travis-ci.org/lvl0nax/alfa_bank.svg?branch=master)](https://travis-ci.org/lvl0nax/alfa_bank)
 
 DESCRIPTION COMING SOON
 
