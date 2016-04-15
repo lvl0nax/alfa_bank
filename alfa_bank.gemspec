@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
   spec.email         = ['lvl0nax@gmail.com']
 
   spec.summary       = %q{AlfaBank api adapter.}
-  spec.description   = %q{AlfaBank api adapter provide you friendly interface for comunicating wuth AlfaBank REST API.}
+  spec.description   = %q{AlfaBank api adapter provides friendly interface for comunication with AlfaBank REST API.}
   spec.homepage      = 'https://github.com/lvl0nax/alfa_bank'
   spec.license       = 'MIT'
 
   spec.required_ruby_version = '>= 2.0.0'
 
-  rails_versions = '>= 4.0'
+  rails_versions = '~> 4.0'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
@@ -25,6 +25,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'activerecord', rails_versions
 end
