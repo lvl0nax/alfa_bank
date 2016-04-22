@@ -45,6 +45,7 @@ params =
 AlfaBank::Client.register_order(params)
 ```
 
+[WIKI](https://github.com/lvl0nax/alfa_bank/wiki)
 
 ## Development
 
